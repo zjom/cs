@@ -8,7 +8,7 @@ typedef struct {
   int capacity;
 } Stack;
 
-Stack *stack_create(int capacity);
+Stack *stack_create(size_t capacity);
 
 void stack_push(Stack *stack, int value);
 
