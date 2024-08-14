@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 // Create a new node
-node *newNode(int val) {
+node *linked_list_node_new(int val) {
   node *n = malloc(sizeof(node));
   if (n == NULL) {
     return NULL;
@@ -14,7 +14,7 @@ node *newNode(int val) {
 }
 
 // Create a new linked list
-linkedList *newLinkedList() {
+linkedList *linked_list_new() {
   linkedList *ll = malloc(sizeof(linkedList));
   if (ll == NULL) {
     return NULL;
@@ -26,7 +26,7 @@ linkedList *newLinkedList() {
 }
 
 // Free the linked list
-void freeLL(linkedList *ll) {
+void linked_list_free(linkedList *ll) {
   if (ll == NULL) {
     return;
   }
@@ -41,11 +41,11 @@ void freeLL(linkedList *ll) {
 }
 
 // Append a new node to the linked list
-node *append(linkedList *ll, int val) {
+node *linked_list_append(linkedList *ll, int val) {
   if (ll == NULL) {
     return NULL;
   }
-  node *n = newNode(val);
+  node *n = linked_list_node_new(val);
   if (n == NULL) {
     return NULL;
   }
@@ -61,7 +61,7 @@ node *append(linkedList *ll, int val) {
 }
 
 // Print the linked list
-void printLL(linkedList *ll) {
+void linked_list_print(linkedList *ll) {
   if (ll == NULL) {
     return;
   }
@@ -74,7 +74,7 @@ void printLL(linkedList *ll) {
 }
 
 // Check if the linked list contains a value
-int contains(linkedList *ll, int val) {
+int linked_list_contains(linkedList *ll, int val) {
   if (ll == NULL) {
     return 0;
   }
@@ -89,7 +89,7 @@ int contains(linkedList *ll, int val) {
 }
 
 // Find a node with a specific value
-node *find(linkedList *ll, int val) {
+node *linked_list_find(linkedList *ll, int val) {
   if (ll == NULL) {
     return NULL;
   }
@@ -104,7 +104,7 @@ node *find(linkedList *ll, int val) {
 }
 
 // Remove a node from the linked list
-int removeNode(linkedList *ll, int val) {
+int linked_list_remove(linkedList *ll, int val) {
   if (ll == NULL) {
     return 0;
   }
@@ -133,7 +133,7 @@ int removeNode(linkedList *ll, int val) {
   return 0;
 }
 
-void sort(linkedList *ll) {
+void linked_list_sort(linkedList *ll) {
   if (ll == NULL) {
     return;
   }
@@ -169,26 +169,26 @@ void assert(int condition, char *message) {
 }
 
 int main() {
-  linkedList *ll = newLinkedList();
-  append(ll, 5);
-  append(ll, 3);
-  append(ll, 8);
-  append(ll, 1);
-  append(ll, 2);
-  append(ll, 4);
-  append(ll, 7);
-  append(ll, 6);
-  append(ll, 9);
-  append(ll, 10);
+  linkedList *ll = linked_list_new();
+  linked_list_append(ll, 5);
+  linked_list_append(ll, 3);
+  linked_list_append(ll, 8);
+  linked_list_append(ll, 1);
+  linked_list_append(ll, 2);
+  linked_list_append(ll, 4);
+  linked_list_append(ll, 7);
+  linked_list_append(ll, 6);
+  linked_list_append(ll, 9);
+  linked_list_append(ll, 10);
   assert(ll->length == 10, "expected length to be 10");
-  printLL(ll);
-  sort(ll);
+  linked_list_print(ll);
+  linked_list_sort(ll);
   assert(ll->head->value == 1, "expected head to be 1");
   assert(ll->tail->value == 10, "expected tail to be 10");
-  printLL(ll);
-  removeNode(ll, 5);
-  assert(!contains(ll, 5), "expected 5 to be removed");
-  printLL(ll);
-  freeLL(ll);
+  linked_list_print(ll);
+  linked_list_remove(ll, 5);
+  assert(!linked_list_contains(ll, 5), "expected 5 to be removed");
+  linked_list_print(ll);
+  linked_list_free(ll);
   return 0;
 }
