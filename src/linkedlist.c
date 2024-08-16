@@ -1,6 +1,18 @@
-#include "linkedlist.h"
 #include <stdio.h>
 #include <stdlib.h>
+
+// Node structure
+typedef struct node {
+  int value;
+  struct node *next;
+} node;
+
+// Linked list structure
+typedef struct {
+  node *head;
+  node *tail;
+  size_t length;
+} linkedList;
 
 // Create a new node
 node *linked_list_node_new(int val) {

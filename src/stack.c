@@ -1,6 +1,11 @@
-#include "stack.h"
 #include <stdio.h>
 #include <stdlib.h>
+
+typedef struct {
+  int *data;
+  int size;
+  int capacity;
+} Stack;
 
 Stack *stack_create(size_t capacity) {
   Stack *stack = malloc(sizeof(Stack));
